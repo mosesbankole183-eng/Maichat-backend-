@@ -131,5 +131,19 @@ router.post("/login", async (req, res) => {
     });
   }
 });
+import authMiddleware from "../middleware/authMiddleware.js";
 
+/* Protected Test Route */
+router.get(
+  "/protected",
+  authMiddleware,
+  (req, res) => {
+    res.json({
+      message: "Access granted",
+      user: req.user
+    });
+  }
+);
+
+export default router;
 export default router;
